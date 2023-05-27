@@ -5,6 +5,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,20 +15,34 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.foodplanner.R;
+import com.example.foodplanner.home.presenter.HomePresenter;
+import com.example.foodplanner.model.Category;
+import com.example.foodplanner.model.Meal;
+import com.example.foodplanner.model.Repository;
+import com.example.foodplanner.network.MealClient;
+import com.example.foodplanner.network.NetworkDelegate;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class HomeFragment extends Fragment {
-    TextView nameTextView;
+import java.util.ArrayList;
+import java.util.List;
+
+public class HomeFragment extends Fragment implements HomeViewInterface,OnFavoriteClickListener {
+    /*TextView nameTextView;
     TextView emailTextView;
     Button logoutButton;
     GoogleSignInOptions googleSignInOptions;
     GoogleSignInClient googleSignInClient;
     FirebaseAuth firebaseAuth;
-
+*/
+    RecyclerView randomRecyclerView,categoryRecyclerView,countryRecyclerView;
+    RandomMealsAdapter randomAdapter;
+    CategoryMealsAdapter categoryAdapter;
+    HomePresenter homePresenter;
+    LinearLayoutManager mealLayoutManager,categortLayoutManager,countryLayoutManager;
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -47,7 +63,38 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        nameTextView=view.findViewById(R.id.nameTv);
+        randomRecyclerView=view.findViewById(R.id.daily_inspirationRV);
+        categoryRecyclerView=view.findViewById(R.id.categoriesRV);
+
+        mealLayoutManager = new LinearLayoutManager(view.getContext());
+        categortLayoutManager = new LinearLayoutManager(view.getContext());
+
+        mealLayoutManager.setOrientation(RecyclerView.HORIZONTAL);
+        categortLayoutManager.setOrientation(RecyclerView.HORIZONTAL);
+
+
+        randomAdapter=new RandomMealsAdapter(getContext(),new ArrayList<>(),this);
+        categoryAdapter=new CategoryMealsAdapter(getContext(),new ArrayList<>());
+
+
+        homePresenter=new HomePresenter( Repository.getInstance(MealClient.getInstance(getContext()),getContext()), HomeFragment.this);
+
+        randomRecyclerView.setHasFixedSize(true);
+        categoryRecyclerView.setHasFixedSize(true);
+
+
+        randomRecyclerView.setLayoutManager(mealLayoutManager);
+        categoryRecyclerView.setLayoutManager(categortLayoutManager);
+
+
+        randomRecyclerView.setAdapter(randomAdapter);
+        categoryRecyclerView.setAdapter(categoryAdapter);
+
+        homePresenter.getRandomMeals();
+        homePresenter.getMealsCategory();
+
+
+        /*nameTextView=view.findViewById(R.id.nameTv);
         emailTextView=view.findViewById(R.id.emailTV);
         logoutButton=view.findViewById(R.id.logOutBtn);
         googleSignInOptions=new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -59,7 +106,7 @@ public class HomeFragment extends Fragment {
         {
             nameTextView.setText(account.getDisplayName());
             emailTextView.setText(account.getEmail());
-        }
+        }*/
 
         /*logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,6 +115,27 @@ public class HomeFragment extends Fragment {
             }
         });*/
     }
+
+    @Override
+    public void viewRandomMeal(List<Meal> meals) {
+        randomAdapter.setList(meals);
+
+
+    }
+
+    @Override
+    public void viewCategories(List<Category> categoryList) {
+
+        categoryAdapter.setList(categoryList);
+        categoryAdapter.notifyDataSetChanged();
+
+    }
+
+    @Override
+    public void onFavClick(Meal meal) {
+
+    }
+
    /* private void signOut() {
         googleSignInClient.signOut().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
