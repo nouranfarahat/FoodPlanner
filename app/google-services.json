@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "225114346652",
+    "firebase_url": "https://food-planner-eaaef-default-rtdb.firebaseio.com",
+    "project_id": "food-planner-eaaef",
+    "storage_bucket": "food-planner-eaaef.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:225114346652:android:c66f4d3bffe6dde5a20959",
+        "android_client_info": {
+          "package_name": "com.example.foodplanner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "225114346652-3lem1lakndcud7n0a8ap0lcch0957vlp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmLva7EaJ5MPWDZ2mjaU2fsocZeLxUKi0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "225114346652-3lem1lakndcud7n0a8ap0lcch0957vlp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
