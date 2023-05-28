@@ -2,6 +2,7 @@ package com.example.foodplanner.home.presenter;
 
 import com.example.foodplanner.home.view.HomeViewInterface;
 import com.example.foodplanner.model.Category;
+import com.example.foodplanner.model.Country;
 import com.example.foodplanner.model.Meal;
 import com.example.foodplanner.model.Repository;
 import com.example.foodplanner.model.RepositoryInterface;
@@ -38,6 +39,10 @@ public class HomePresenter implements NetworkDelegate {
 
     }
 
+    @Override
+    public void onSuccessCountries(List<Country> countryList) {
+        homeViewInterface.viewCountries(countryList);
+    }
 
 
     @Override
@@ -53,6 +58,11 @@ public class HomePresenter implements NetworkDelegate {
     {
         repositoryInterface.getMealCategory(this);
     }
+    public void getCountry()
+    {
+        repositoryInterface.getCountry(this);
+    }
+
 
 
 }

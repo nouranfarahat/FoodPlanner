@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,6 +18,7 @@ import android.widget.TextView;
 import com.example.foodplanner.R;
 import com.example.foodplanner.home.presenter.HomePresenter;
 import com.example.foodplanner.model.Category;
+import com.example.foodplanner.model.Country;
 import com.example.foodplanner.model.Meal;
 import com.example.foodplanner.model.Repository;
 import com.example.foodplanner.network.MealClient;
@@ -29,6 +31,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class HomeFragment extends Fragment implements HomeViewInterface,OnFavoriteClickListener {
     /*TextView nameTextView;
@@ -41,8 +44,10 @@ public class HomeFragment extends Fragment implements HomeViewInterface,OnFavori
     RecyclerView randomRecyclerView,categoryRecyclerView,countryRecyclerView;
     RandomMealsAdapter randomAdapter;
     CategoryMealsAdapter categoryAdapter;
+    CountryAdapter countryAdapter;
     HomePresenter homePresenter;
-    LinearLayoutManager mealLayoutManager,categortLayoutManager,countryLayoutManager;
+    LinearLayoutManager mealLayoutManager,categoryLayoutManager,countryLayoutManager;
+    GridLayoutManager categoryGridLayoutManager;
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -65,33 +70,49 @@ public class HomeFragment extends Fragment implements HomeViewInterface,OnFavori
         super.onViewCreated(view, savedInstanceState);
         randomRecyclerView=view.findViewById(R.id.daily_inspirationRV);
         categoryRecyclerView=view.findViewById(R.id.categoriesRV);
+        countryRecyclerView=view.findViewById(R.id.countriesRV);
+
 
         mealLayoutManager = new LinearLayoutManager(view.getContext());
-        categortLayoutManager = new LinearLayoutManager(view.getContext());
+        //categoryLayoutManager = new LinearLayoutManager(view.getContext());
+        countryLayoutManager = new LinearLayoutManager(view.getContext());
+        categoryGridLayoutManager=new GridLayoutManager(getContext(),2);
+
 
         mealLayoutManager.setOrientation(RecyclerView.HORIZONTAL);
-        categortLayoutManager.setOrientation(RecyclerView.HORIZONTAL);
+        //categoryLayoutManager.setOrientation(RecyclerView.HORIZONTAL);
+        countryLayoutManager.setOrientation(RecyclerView.HORIZONTAL);
+        categoryGridLayoutManager.setOrientation(RecyclerView.VERTICAL);
+
 
 
         randomAdapter=new RandomMealsAdapter(getContext(),new ArrayList<>(),this);
         categoryAdapter=new CategoryMealsAdapter(getContext(),new ArrayList<>());
+        countryAdapter=new CountryAdapter(getContext(),new ArrayList<>());
 
 
         homePresenter=new HomePresenter( Repository.getInstance(MealClient.getInstance(getContext()),getContext()), HomeFragment.this);
 
         randomRecyclerView.setHasFixedSize(true);
         categoryRecyclerView.setHasFixedSize(true);
+        countryRecyclerView.setHasFixedSize(true);
+
 
 
         randomRecyclerView.setLayoutManager(mealLayoutManager);
-        categoryRecyclerView.setLayoutManager(categortLayoutManager);
-
+        //categoryRecyclerView.setLayoutManager(categoryLayoutManager);
+        countryRecyclerView.setLayoutManager(countryLayoutManager);
+        categoryRecyclerView.setLayoutManager(categoryGridLayoutManager);
 
         randomRecyclerView.setAdapter(randomAdapter);
         categoryRecyclerView.setAdapter(categoryAdapter);
+        countryRecyclerView.setAdapter(countryAdapter);
+
 
         homePresenter.getRandomMeals();
         homePresenter.getMealsCategory();
+        homePresenter.getCountry();
+
 
 
         /*nameTextView=view.findViewById(R.id.nameTv);
@@ -128,6 +149,14 @@ public class HomeFragment extends Fragment implements HomeViewInterface,OnFavori
 
         categoryAdapter.setList(categoryList);
         categoryAdapter.notifyDataSetChanged();
+
+    }
+
+    @Override
+    public void viewCountries(List<Country> countryList) {
+
+        countryAdapter.setList(countryList);
+        countryAdapter.notifyDataSetChanged();
 
     }
 

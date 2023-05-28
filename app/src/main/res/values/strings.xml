@@ -15,4 +15,39 @@
     <string name="home">Home</string>
     <string name="search">Search</string>
     <string name="daily_inspiration">Daily Inspiration</string>
+    <string name="categories">Categories</string>
+    <string name="countries">Countries</string>
+
+    <string-array name="CountryFlag">
+        <item name="American">"https://www.worldometers.info/img/flags/us-flag.gif"</item>
+        <item name="British">"https://www.worldometers.info/img/flags/small/tn_uk-flag.gif"</item>
+        <item name="Canadian">"https://www.worldometers.info/img/flags/small/tn_ca-flag.gif"</item>
+        <item name="Chinese">"https://www.worldometers.info/img/flags/small/tn_ch-flag.gif"</item>
+        <item name="Croatian">"https://www.worldometers.info/img/flags/small/tn_hr-flag.gif"</item>
+        <item name="Dutch">"https://www.worldometers.info/img/flags/small/tn_nl-flag.gif"</item>
+        <item name="Egyptian">"https://www.worldometers.info/img/flags/small/tn_eg-flag.gif"</item>
+        <item name="Filipino">"https://www.worldometers.info/img/flags/small/tn_rp-flag.gif"</item>
+        <item name="French">"https://www.worldometers.info/img/flags/small/tn_fr-flag.gif"</item>
+        <item name="Greek">"https://www.worldometers.info/img/flags/small/tn_gr-flag.gif"</item>
+        <item name="Indian">"https://www.worldometers.info/img/flags/small/tn_in-flag.gif"</item>
+        <item name="Irish">"https://www.worldometers.info/img/flags/small/tn_ei-flag.gif"</item>
+        <item name="Italian">"https://www.worldometers.info/img/flags/small/tn_it-flag.gif"</item>
+        <item name="Jamaican">"https://www.worldometers.info/img/flags/small/tn_jm-flag.gif"</item>
+        <item name="Japanese">"https://www.worldometers.info/img/flags/small/tn_ja-flag.gif"</item>
+        <item name="Kenyan">"https://www.worldometers.info/img/flags/small/tn_ke-flag.gif"</item>
+        <item name="Malaysian">"https://www.worldometers.info/img/flags/small/tn_my-flag.gif"</item>
+        <item name="Mexican">"https://www.worldometers.info/img/flags/small/tn_mx-flag.gif"</item>
+        <item name="Moroccan">"https://www.worldometers.info/img/flags/small/tn_mo-flag.gif"</item>
+        <item name="Polish">"https://www.worldometers.info/img/flags/small/tn_pl-flag.gif"</item>
+        <item name="Portuguese">"https://www.worldometers.info/img/flags/small/tn_po-flag.gif"</item>
+        <item name="Russian">"https://www.worldometers.info/img/flags/small/tn_rs-flag.gif"</item>
+        <item name="Spanish">"https://www.worldometers.info/img/flags/small/tn_sp-flag.gif"</item>
+        <item name="Thai">"https://www.worldometers.info/img/flags/small/tn_th-flag.gif"</item>
+        <item name="Tunisian">"https://www.worldometers.info/img/flags/small/tn_ts-flag.gif"</item>
+        <item name="Turkish">"https://www.worldometers.info/img/flags/small/tn_tu-flag.gif"</item>
+        <item name="Unknown">"https://www.freepnglogos.com/uploads/earth-png/earth-seen-from-space-transparent-png-stickpng-12.png"</item>
+        <item name="Vietnamese">"https://www.worldometers.info/img/flags/small/tn_vm-flag.gif"</item>
+
+
+    </string-array>
 </resources>

@@ -71,4 +71,44 @@ public class MealClient implements RemoteSource {
             }
         });
     }
+
+    @Override
+    public void getCountries(NetworkDelegate networkDelegate) {
+        Call<CountryResponse> call = mealService.getCountries();
+        call.enqueue(new Callback<CountryResponse>() {
+            @Override
+            public void onResponse(Call<CountryResponse> call, Response<CountryResponse> response) {
+                if(response.isSuccessful()&&response.body()!=null)
+                {
+                    networkDelegate.onSuccessCountries(response.body().getCountries());
+                    Log.i(TAG, "getCountries success");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CountryResponse> call, Throwable t) {
+                networkDelegate.onFailureResponse(t.getMessage());
+
+            }
+        });
+    }
+
+    @Override
+    public void getMealsByCountry(NetworkDelegate networkDelegate, String countryName) {
+        Call<MealResponse> call = mealService.getCountryMeals(countryName);
+        call.enqueue(new Callback<MealResponse>() {
+            @Override
+            public void onResponse(Call<MealResponse> call, Response<MealResponse> response) {
+                if(response.isSuccessful()&&response.body()!=null)
+                    networkDelegate.onSuccessMeal(response.body().getMeals());
+                Log.i(TAG,"getCountryMeals success");
+            }
+
+            @Override
+            public void onFailure(Call<MealResponse> call, Throwable t) {
+                networkDelegate.onFailureResponse("Error in Failure "+t.getMessage());
+
+            }
+        });
+    }
 }

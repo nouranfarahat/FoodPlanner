@@ -1,35 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/meal_card_content"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="4dp"
-        android:backgroundTint="@color/light_gray"
-        app:cardUseCompatPadding="true"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp">
+    android:id="@+id/country_card_view"
+    android:layout_width="200dp"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp"
+    android:backgroundTint="@color/light_gray"
+    app:cardUseCompatPadding="true">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/categoryImageView"
+            android:id="@+id/countryImageView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scaleType="centerInside"
-
+            android:scaleType="fitCenter"
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
-            android:id="@+id/categoryTitleTextView"
+            android:id="@+id/countryTitleTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/categoryImageView"
+            android:layout_below="@id/countryImageView"
             android:layout_marginTop="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
@@ -39,4 +36,4 @@
             android:textColor="@android:color/black" />
 
     </RelativeLayout>
-    </androidx.cardview.widget.CardView>
+</androidx.cardview.widget.CardView>
