@@ -41,4 +41,9 @@ public class Repository implements RepositoryInterface{
     public void getCountryMeals(NetworkDelegate networkDelegate, String countryName) {
         remoteSource.getMealsByCountry(networkDelegate,countryName);
     }
+
+    @Override
+    public void getMealDetails(NetworkDelegate networkDelegate, String mealName) {
+        remoteSource.getMealDetails(networkDelegate,mealName);
+    }
 }

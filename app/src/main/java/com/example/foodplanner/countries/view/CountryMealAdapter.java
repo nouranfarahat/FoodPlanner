@@ -12,10 +12,12 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.foodplanner.R;
+import com.example.foodplanner.home.view.HomeFragmentDirections;
 import com.example.foodplanner.home.view.OnFavoriteClickListener;
 import com.example.foodplanner.home.view.RandomMealsAdapter;
 import com.example.foodplanner.model.Meal;
@@ -46,7 +48,7 @@ public class CountryMealAdapter extends RecyclerView.Adapter<CountryMealAdapter.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.titleTextView.setText(mealList.get(position).getStrMeal());
         Glide.with(context)
                 .load(mealList.get(position).getStrMealThumb()).placeholder(R.drawable.ic_launcher_background)
@@ -56,6 +58,14 @@ public class CountryMealAdapter extends RecyclerView.Adapter<CountryMealAdapter.
             @Override
             public void onClick(View v) {
                 listener.onFavClick(mealList.get(position));
+            }
+        });
+        holder.mealCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String mealName=mealList.get(position).getStrMeal().toString();
+                HomeFragmentDirections.ActionHomeFragmentToMealDetailsFragment action=HomeFragmentDirections.actionHomeFragmentToMealDetailsFragment(mealName);
+                Navigation.findNavController(v).navigate(action);
             }
         });
         Log.i(TAG,"onBindViewHolder");

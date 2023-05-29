@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -56,6 +58,14 @@ public class RandomMealsAdapter extends RecyclerView.Adapter<RandomMealsAdapter.
                 listener.onFavClick(mealList.get(position));
             }
         });
+        holder.mealCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String mealName=mealList.get(position).getStrMeal().toString();
+                HomeFragmentDirections.ActionHomeFragmentToMealDetailsFragment action=HomeFragmentDirections.actionHomeFragmentToMealDetailsFragment(mealName);
+                Navigation.findNavController(v).navigate(action);
+            }
+        });
         Log.i(TAG,"onBindViewHolder");
     }
 
@@ -69,12 +79,14 @@ public class RandomMealsAdapter extends RecyclerView.Adapter<RandomMealsAdapter.
         ImageView mealImage;
         ImageButton favButton;
         TextView titleTextView;
+        CardView mealCard;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             mealImage=itemView.findViewById(R.id.mealImageView);
             favButton=itemView.findViewById(R.id.favoriteButtonIcon);
             titleTextView=itemView.findViewById(R.id.mealTitleTextView);
+            mealCard=itemView.findViewById(R.id.meal_card_content);
         }
     }
     public void setList(List<Meal> updateList)

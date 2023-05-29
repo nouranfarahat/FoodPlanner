@@ -1,4 +1,48 @@
 package com.example.foodplanner.mealdetails.presenter;
 
-public class MealDetailsPresenter {
+import com.example.foodplanner.home.view.HomeViewInterface;
+import com.example.foodplanner.mealdetails.view.MealViewInterface;
+import com.example.foodplanner.model.Category;
+import com.example.foodplanner.model.Country;
+import com.example.foodplanner.model.Meal;
+import com.example.foodplanner.model.RepositoryInterface;
+import com.example.foodplanner.network.NetworkDelegate;
+
+import java.util.List;
+
+public class MealDetailsPresenter implements NetworkDelegate {
+
+    RepositoryInterface repositoryInterface;
+    MealViewInterface mealViewInterface;
+
+    public MealDetailsPresenter(RepositoryInterface repositoryInterface, MealViewInterface mealViewInterface) {
+        this.repositoryInterface = repositoryInterface;
+        this.mealViewInterface = mealViewInterface;
+    }
+
+    @Override
+    public void onSuccessMeal(List<Meal> mealsList) {
+        mealViewInterface.viewMealDetails(mealsList);
+    }
+
+    @Override
+    public void onSuccessCategories(List<Category> categoryList) {
+
+    }
+
+    @Override
+    public void onSuccessCountries(List<Country> countryList) {
+
+    }
+
+
+
+    @Override
+    public void onFailureResponse(String errorMsg) {
+
+    }
+    public void getMealFromRepo(String mealName)
+    {
+        repositoryInterface.getMealDetails(this,mealName);
+    }
 }

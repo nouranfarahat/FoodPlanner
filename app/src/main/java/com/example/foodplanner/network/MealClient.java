@@ -3,6 +3,8 @@ package com.example.foodplanner.network;
 import android.content.Context;
 import android.util.Log;
 
+import com.example.foodplanner.model.Meal;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -102,6 +104,27 @@ public class MealClient implements RemoteSource {
                 if(response.isSuccessful()&&response.body()!=null)
                     networkDelegate.onSuccessMeal(response.body().getMeals());
                 Log.i(TAG,"getCountryMeals success");
+            }
+
+            @Override
+            public void onFailure(Call<MealResponse> call, Throwable t) {
+                networkDelegate.onFailureResponse("Error in Failure "+t.getMessage());
+
+            }
+        });
+    }
+
+    @Override
+    public void getMealDetails(NetworkDelegate networkDelegate, String mealName) {
+        Call<MealResponse> call = mealService.getMealDetails(mealName);
+        call.enqueue(new Callback<MealResponse>() {
+            @Override
+            public void onResponse(Call<MealResponse> call, Response<MealResponse> response) {
+                if(response.isSuccessful()&&response.body()!=null) {
+                    //String temp = response.body().getStrMeal().toString();
+                    networkDelegate.onSuccessMeal(response.body().getMeals());
+                    Log.i(TAG, "getMealsDetails success");
+                }
             }
 
             @Override

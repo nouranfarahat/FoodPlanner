@@ -7,6 +7,8 @@ public interface RepositoryInterface {
     public void getMealCategory(NetworkDelegate networkDelegate);
     public void getCountry(NetworkDelegate networkDelegate);
     public void getCountryMeals(NetworkDelegate networkDelegate,String countryName);
+    public void getMealDetails(NetworkDelegate networkDelegate,String mealName);
+
 
 
 

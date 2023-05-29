@@ -1,6 +1,7 @@
 package com.example.foodplanner.network;
 
 import com.example.foodplanner.model.Country;
+import com.example.foodplanner.model.Meal;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -19,4 +20,6 @@ public interface MealService {
     public Call<CountryResponse> getCountries();
     @GET("filter.php")
     public Call<MealResponse> getCountryMeals(@Query("a") String CountryName);
+    @GET("search.php")
+    public Call<MealResponse> getMealDetails(@Query("s") String mealName);
 }

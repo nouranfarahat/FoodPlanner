@@ -10,7 +10,6 @@ public interface NetworkDelegate {
     public void onSuccessMeal(List<Meal> mealsList);
     public void onSuccessCategories(List<Category> categoryList);
     public void onSuccessCountries(List<Country> countryList);
-
     public void onFailureResponse(String errorMsg);
 
 }

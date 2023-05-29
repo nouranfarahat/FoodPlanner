@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_homeFragment_to_countryMealsFragment"
             app:destination="@id/countryMealsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_mealDetailsFragment"
+            app:destination="@id/mealDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/userFragment"
@@ -40,6 +43,18 @@
         tools:layout="@layout/fragment_country_meals" >
         <argument
             android:name="selectedCountryName"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_countryMealsFragment_to_mealDetailsFragment"
+            app:destination="@id/mealDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mealDetailsFragment"
+        android:name="com.example.foodplanner.mealdetails.view.MealDetailsFragment"
+        android:label="fragment_meal_details"
+        tools:layout="@layout/fragment_meal_details" >
+        <argument
+            android:name="mealName"
             app:argType="string" />
     </fragment>
 </navigation>
