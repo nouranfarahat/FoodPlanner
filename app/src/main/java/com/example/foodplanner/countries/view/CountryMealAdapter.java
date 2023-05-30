@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -79,7 +80,7 @@ public class CountryMealAdapter extends RecyclerView.Adapter<CountryMealAdapter.
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView mealImage;
-        ImageButton favButton;
+        ToggleButton favButton;
         TextView titleTextView;
         CardView mealCardView;
         View layout;

@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -66,6 +67,7 @@ public class RandomMealsAdapter extends RecyclerView.Adapter<RandomMealsAdapter.
                 Navigation.findNavController(v).navigate(action);
             }
         });
+
         Log.i(TAG,"onBindViewHolder");
     }
 
@@ -77,7 +79,7 @@ public class RandomMealsAdapter extends RecyclerView.Adapter<RandomMealsAdapter.
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView mealImage;
-        ImageButton favButton;
+        ToggleButton favButton;
         TextView titleTextView;
         CardView mealCard;
         public ViewHolder(@NonNull View itemView) {

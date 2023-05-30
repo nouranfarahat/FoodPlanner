@@ -1,9 +1,18 @@
 package com.example.foodplanner.model;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "meals")
 public class Meal {
+
+    @PrimaryKey
+    @NonNull
     public String idMeal;
     public String strMeal;
-    public Object strDrinkAlternate;
+    public String strDrinkAlternate;
     public String strCategory;
     public String strArea;
     public String strInstructions;
@@ -51,9 +60,9 @@ public class Meal {
     public String strMeasure19;
     public String strMeasure20;
     public String strSource;
-    public Object strImageSource;
-    public Object strCreativeCommonsConfirmed;
-    public Object dateModified;
+    public String strImageSource;
+    public String strCreativeCommonsConfirmed;
+    public String dateModified;
 
     public String getIdMeal() {
         return idMeal;
@@ -71,11 +80,11 @@ public class Meal {
         this.strMeal = strMeal;
     }
 
-    public Object getStrDrinkAlternate() {
+    public String getStrDrinkAlternate() {
         return strDrinkAlternate;
     }
 
-    public void setStrDrinkAlternate(Object strDrinkAlternate) {
+    public void setStrDrinkAlternate(String strDrinkAlternate) {
         this.strDrinkAlternate = strDrinkAlternate;
     }
 
@@ -455,27 +464,27 @@ public class Meal {
         this.strSource = strSource;
     }
 
-    public Object getStrImageSource() {
+    public String getStrImageSource() {
         return strImageSource;
     }
 
-    public void setStrImageSource(Object strImageSource) {
+    public void setStrImageSource(String strImageSource) {
         this.strImageSource = strImageSource;
     }
 
-    public Object getStrCreativeCommonsConfirmed() {
+    public String getStrCreativeCommonsConfirmed() {
         return strCreativeCommonsConfirmed;
     }
 
-    public void setStrCreativeCommonsConfirmed(Object strCreativeCommonsConfirmed) {
+    public void setStrCreativeCommonsConfirmed(String strCreativeCommonsConfirmed) {
         this.strCreativeCommonsConfirmed = strCreativeCommonsConfirmed;
     }
 
-    public Object getDateModified() {
+    public String getDateModified() {
         return dateModified;
     }
 
-    public void setDateModified(Object dateModified) {
+    public void setDateModified(String dateModified) {
         this.dateModified = dateModified;
     }
 }

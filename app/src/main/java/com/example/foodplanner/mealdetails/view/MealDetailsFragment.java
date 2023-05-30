@@ -20,6 +20,7 @@ import com.example.foodplanner.R;
 import com.example.foodplanner.countries.presenter.CountryPresenter;
 import com.example.foodplanner.countries.view.CountryMealAdapter;
 import com.example.foodplanner.countries.view.CountryMealsFragmentArgs;
+import com.example.foodplanner.database.ConcreteLocalSource;
 import com.example.foodplanner.home.presenter.HomePresenter;
 import com.example.foodplanner.home.view.CountryAdapter;
 import com.example.foodplanner.home.view.HomeFragment;
@@ -89,7 +90,7 @@ public class MealDetailsFragment extends Fragment implements MealViewInterface{
         ingredientAdapter=new IngredientAdapter(getContext(),new ArrayList<>());
 
 
-        mealDetailsPresenter=new MealDetailsPresenter( Repository.getInstance(MealClient.getInstance(getContext()),getContext()), MealDetailsFragment.this);
+        mealDetailsPresenter=new MealDetailsPresenter( Repository.getInstance(ConcreteLocalSource.getInstance(getContext()),MealClient.getInstance(getContext()),getContext()), MealDetailsFragment.this);
 
         ingredientRecyclerView.setHasFixedSize(true);
         ingredientRecyclerView.setLayoutManager(ingredientLayoutManager);

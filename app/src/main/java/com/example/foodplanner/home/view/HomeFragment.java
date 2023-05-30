@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.foodplanner.R;
+import com.example.foodplanner.database.ConcreteLocalSource;
 import com.example.foodplanner.home.presenter.HomePresenter;
 import com.example.foodplanner.model.Category;
 import com.example.foodplanner.model.Country;
@@ -91,7 +92,7 @@ public class HomeFragment extends Fragment implements HomeViewInterface,OnFavori
         countryAdapter=new CountryAdapter(getContext(),new ArrayList<>());
 
 
-        homePresenter=new HomePresenter( Repository.getInstance(MealClient.getInstance(getContext()),getContext()), HomeFragment.this);
+        homePresenter=new HomePresenter( Repository.getInstance(ConcreteLocalSource.getInstance(getContext()),MealClient.getInstance(getContext()),getContext()), HomeFragment.this);
 
         randomRecyclerView.setHasFixedSize(true);
         categoryRecyclerView.setHasFixedSize(true);
@@ -162,7 +163,7 @@ public class HomeFragment extends Fragment implements HomeViewInterface,OnFavori
 
     @Override
     public void onFavClick(Meal meal) {
-
+        homePresenter.addToFav(meal);
     }
 
    /* private void signOut() {

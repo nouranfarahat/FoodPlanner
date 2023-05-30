@@ -23,16 +23,16 @@
             android:scaleType="centerCrop"
             tools:srcCompat="@tools:sample/avatars" />
 
-        <ImageButton
+        <ToggleButton
             android:id="@+id/favoriteButtonIcon"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:background="@drawable/fav_background"
-            android:src="@drawable/bookmark"
+            android:textOff=""
+            android:textOn=""
+            android:background="@drawable/toggle_selector"
             android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
             android:layout_margin="16dp"
-            app:tint="@color/yellow"
             android:scaleType="fitCenter"
             android:padding="7dp"/>
 
@@ -46,6 +46,7 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             android:text="Title"
+            android:gravity="center"
             android:textSize="18sp"
             android:textColor="@android:color/black" />
 
