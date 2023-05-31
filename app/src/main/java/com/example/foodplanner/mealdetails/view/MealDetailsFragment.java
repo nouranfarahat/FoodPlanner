@@ -5,7 +5,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,15 +16,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.foodplanner.R;
-import com.example.foodplanner.countries.presenter.CountryPresenter;
-import com.example.foodplanner.countries.view.CountryMealAdapter;
-import com.example.foodplanner.countries.view.CountryMealsFragmentArgs;
 import com.example.foodplanner.database.ConcreteLocalSource;
-import com.example.foodplanner.home.presenter.HomePresenter;
-import com.example.foodplanner.home.view.CountryAdapter;
-import com.example.foodplanner.home.view.HomeFragment;
 import com.example.foodplanner.mealdetails.presenter.MealDetailsPresenter;
-import com.example.foodplanner.model.Ingredient;
+import com.example.foodplanner.model.IngredientModel;
 import com.example.foodplanner.model.Meal;
 import com.example.foodplanner.model.Repository;
 import com.example.foodplanner.network.MealClient;
@@ -50,7 +43,7 @@ public class MealDetailsFragment extends Fragment implements MealViewInterface{
     IngredientAdapter ingredientAdapter;
     MealDetailsPresenter mealDetailsPresenter;
     LinearLayoutManager ingredientLayoutManager;
-    List<Ingredient> ingredientList;
+    List<IngredientModel> ingredientList;
 
     public MealDetailsFragment() {
         // Required empty public constructor
@@ -196,7 +189,7 @@ public class MealDetailsFragment extends Fragment implements MealViewInterface{
         List<String> ingredientItemImageList=getIngredientItemImageList(ingredientItemList);
         for(int i=0;i<ingredientItemList.size();i++)
         {
-            ingredientList.add(new Ingredient(ingredientItemList.get(i),ingredientItemImageList.get(i),ingredientItemMeasureList.get(i)));
+            ingredientList.add(new IngredientModel(ingredientItemList.get(i),ingredientItemImageList.get(i),ingredientItemMeasureList.get(i)));
         }
     }
 }

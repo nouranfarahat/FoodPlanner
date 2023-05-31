@@ -1,9 +1,10 @@
 package com.example.foodplanner.mealdetails.presenter;
 
-import com.example.foodplanner.home.view.HomeViewInterface;
 import com.example.foodplanner.mealdetails.view.MealViewInterface;
 import com.example.foodplanner.model.Category;
 import com.example.foodplanner.model.Country;
+import com.example.foodplanner.model.Ingredient;
+import com.example.foodplanner.model.IngredientModel;
 import com.example.foodplanner.model.Meal;
 import com.example.foodplanner.model.RepositoryInterface;
 import com.example.foodplanner.network.NetworkDelegate;
@@ -35,6 +36,10 @@ public class MealDetailsPresenter implements NetworkDelegate {
 
     }
 
+    @Override
+    public void onSuccessIngredients(List<Ingredient> ingredientList) {
+
+    }
 
 
     @Override

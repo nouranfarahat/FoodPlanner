@@ -46,6 +46,11 @@ public class Repository implements RepositoryInterface{
     }
 
     @Override
+    public void getIngredients(NetworkDelegate networkDelegate) {
+        remoteSource.getIngredients(networkDelegate);
+    }
+
+    @Override
     public void getCountryMeals(NetworkDelegate networkDelegate, String countryName) {
         remoteSource.getMealsByCountry(networkDelegate,countryName);
     }
@@ -54,6 +59,11 @@ public class Repository implements RepositoryInterface{
     public void getCategoryMeals(NetworkDelegate networkDelegate, String categoryName) {
         remoteSource.getMealsByCategory(networkDelegate,categoryName);
 
+    }
+
+    @Override
+    public void getIngredientMeals(NetworkDelegate networkDelegate, String ingredientName) {
+remoteSource.getMealsByIngredient(networkDelegate,ingredientName);
     }
 
     @Override

@@ -9,9 +9,7 @@
         app:cardCornerRadius="8dp"
         app:cardElevation="4dp"
         android:backgroundTint="@color/light_gray"
-        app:cardUseCompatPadding="true"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp">
+        app:cardUseCompatPadding="true">
 
     <RelativeLayout
         android:layout_width="match_parent"

@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".search.SearchFragment"
+    tools:context=".search.view.SearchFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -25,7 +25,7 @@
         android:layout_gravity="center">
 
         <ToggleButton
-            android:id="@+id/button1"
+            android:id="@+id/ingredientsBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/ingredients"
@@ -38,7 +38,7 @@
             android:background="@drawable/tab_item_style"/>
 
         <ToggleButton
-            android:id="@+id/button2"
+            android:id="@+id/countriesBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/countries"
@@ -54,7 +54,7 @@
             />
 
         <ToggleButton
-            android:id="@+id/button3"
+            android:id="@+id/categoriesBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/categories"
@@ -67,16 +67,18 @@
             android:layout_weight="1"/>
 
     </RadioGroup>
-    <fragment
-        android:id="@+id/nav_host_fragment"
-        android:name="androidx.navigation.fragment.NavHostFragment"
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/searchRV"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="15dp"
-        app:defaultNavHost="true"
-        app:layout_insetEdge="top"
-
-        app:navGraph="@navigation/search_nav_graph"/>
+        app:layout_constraintVertical_weight="1"
+        tools:listitem="@layout/meal_card"
+        android:gravity="end"/>
+    </ScrollView>
 
 </LinearLayout>
 

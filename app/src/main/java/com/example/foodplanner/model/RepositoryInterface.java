@@ -10,8 +10,12 @@ public interface RepositoryInterface {
     public void getRandomMeal(NetworkDelegate networkDelegate);
     public void getMealCategory(NetworkDelegate networkDelegate);
     public void getCountry(NetworkDelegate networkDelegate);
+    public void getIngredients(NetworkDelegate networkDelegate);
+
     public void getCountryMeals(NetworkDelegate networkDelegate,String countryName);
     public void getCategoryMeals(NetworkDelegate networkDelegate,String categoryName);
+    public void getIngredientMeals(NetworkDelegate networkDelegate,String ingredientName);
+
 
     public void getMealDetails(NetworkDelegate networkDelegate,String mealName);
 

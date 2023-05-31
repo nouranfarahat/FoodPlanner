@@ -1,6 +1,5 @@
-package com.example.foodplanner.home.presenter;
+package com.example.foodplanner.search.presenter;
 
-import com.example.foodplanner.home.view.HomeViewInterface;
 import com.example.foodplanner.model.Category;
 import com.example.foodplanner.model.Country;
 import com.example.foodplanner.model.Ingredient;
@@ -8,39 +7,41 @@ import com.example.foodplanner.model.IngredientModel;
 import com.example.foodplanner.model.Meal;
 import com.example.foodplanner.model.RepositoryInterface;
 import com.example.foodplanner.network.NetworkDelegate;
+import com.example.foodplanner.search.view.SearchViewInterface;
 
 import java.util.List;
 
-public class HomePresenter implements NetworkDelegate {
+public class SearchPresenter implements NetworkDelegate {
 
     RepositoryInterface repositoryInterface;
-    HomeViewInterface homeViewInterface;
+    SearchViewInterface searchViewInterface;
 
 
-    public HomePresenter(RepositoryInterface repositoryInterface, HomeViewInterface homeViewInterface) {
+    public SearchPresenter(RepositoryInterface repositoryInterface, SearchViewInterface searchViewInterface) {
         this.repositoryInterface = repositoryInterface;
-        this.homeViewInterface = homeViewInterface;
+        this.searchViewInterface = searchViewInterface;
     }
 
     @Override
     public void onSuccessMeal(List<Meal> meals) {
-        homeViewInterface.viewRandomMeal(meals);
+        searchViewInterface.viewMeals(meals);
+
     }
 
     @Override
     public void onSuccessCategories(List<Category> categoryList) {
-        homeViewInterface.viewCategories(categoryList);
+        searchViewInterface.viewCategories(categoryList);
 
     }
 
     @Override
     public void onSuccessCountries(List<Country> countryList) {
-        homeViewInterface.viewCountries(countryList);
+        searchViewInterface.viewCountries(countryList);
     }
 
     @Override
     public void onSuccessIngredients(List<Ingredient> ingredientList) {
-
+        searchViewInterface.viewIngredients(ingredientList);
     }
 
 
@@ -49,9 +50,9 @@ public class HomePresenter implements NetworkDelegate {
         System.out.println("Error in Connection");
 
     }
-    public void getRandomMeals()
+    public void getIngredientMeals()
     {
-        repositoryInterface.getRandomMeal(this);
+        repositoryInterface.getIngredients(this);
     }
     public void getMealsCategory()
     {
@@ -61,10 +62,23 @@ public class HomePresenter implements NetworkDelegate {
     {
         repositoryInterface.getCountry(this);
     }
+    public void getCategoryMealsByName(String categoryName)
+    {
+        repositoryInterface.getCategoryMeals(this,categoryName);
+    }
+    public void getCountryMealsByName(String countryName)
+    {
+        repositoryInterface.getCountryMeals(this,countryName);
+    }
+    public void getMealsByIngredient(String ingredientName)
+    {
+        repositoryInterface.getIngredientMeals(this,ingredientName);
+    }
     public void addToFav(Meal meal)
     {
         repositoryInterface.insertMeal(meal);
     }
+
 
 
 
