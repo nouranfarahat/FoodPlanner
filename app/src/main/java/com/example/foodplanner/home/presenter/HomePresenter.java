@@ -21,13 +21,6 @@ public class HomePresenter implements NetworkDelegate {
         this.homeViewInterface = homeViewInterface;
     }
 
-
-    public void addToFav(Meal meal)
-    {
-        //repo.insertProduct(meal);
-    }
-
-
     @Override
     public void onSuccessMeal(List<Meal> meals) {
         homeViewInterface.viewRandomMeal(meals);
@@ -61,6 +54,10 @@ public class HomePresenter implements NetworkDelegate {
     public void getCountry()
     {
         repositoryInterface.getCountry(this);
+    }
+    public void addToFav(Meal meal)
+    {
+        repositoryInterface.insertMeal(meal);
     }
 
 

@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.example.foodplanner.R;
 import com.example.foodplanner.countries.presenter.CountryPresenter;
+import com.example.foodplanner.database.ConcreteLocalSource;
 import com.example.foodplanner.home.presenter.HomePresenter;
 import com.example.foodplanner.home.view.CategoryMealsAdapter;
 import com.example.foodplanner.home.view.CountryAdapter;
@@ -68,7 +69,7 @@ public class CountryMealsFragment extends Fragment implements CountryViewInterfa
 
         countryMealAdapter=new CountryMealAdapter(getContext(),new ArrayList<>(),this);
 
-        countryPresenter=new CountryPresenter(CountryMealsFragment.this,Repository.getInstance(MealClient.getInstance(getContext()),getContext()));
+        countryPresenter=new CountryPresenter(CountryMealsFragment.this,Repository.getInstance(ConcreteLocalSource.getInstance(getContext()),MealClient.getInstance(getContext()),getContext()));
 
         mealListRecyclerView.setHasFixedSize(true);
 
