@@ -1,6 +1,10 @@
-package com.example.foodplanner.countries.view;
+package com.example.foodplanner.ingredients.view;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -8,32 +12,28 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-
 import com.example.foodplanner.R;
-import com.example.foodplanner.countries.presenter.CountryPresenter;
+import com.example.foodplanner.countries.view.CountryMealsFragmentArgs;
 import com.example.foodplanner.database.ConcreteLocalSource;
-import com.example.foodplanner.utilities.OnFavoriteClickListener;
+import com.example.foodplanner.ingredients.presenter.IngredientPresenter;
 import com.example.foodplanner.model.Meal;
 import com.example.foodplanner.model.Repository;
 import com.example.foodplanner.network.MealClient;
+import com.example.foodplanner.utilities.OnFavoriteClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class CountryMealsFragment extends Fragment implements CountryViewInterface, OnFavoriteClickListener {
+public class IngredientFragment extends Fragment implements IngredientViewInterface, OnFavoriteClickListener {
 
     TextView countryName;
     RecyclerView mealListRecyclerView;
-    CountryMealAdapter countryMealAdapter;
+    IngredientAdapter countryMealAdapter;
     GridLayoutManager mealGridLayoutManager;
-    CountryPresenter countryPresenter;
+    IngredientPresenter countryPresenter;
 
-    public CountryMealsFragment() {
+    public IngredientFragment() {
         // Required empty public constructor
     }
 
@@ -51,7 +51,7 @@ public class CountryMealsFragment extends Fragment implements CountryViewInterfa
         super.onViewCreated(view, savedInstanceState);
         countryName=view.findViewById(R.id.countryNameTV);
         mealListRecyclerView=view.findViewById(R.id.countryMealsRV);
-        String name=CountryMealsFragmentArgs.fromBundle(getArguments()).getSelectedCountryName();
+        String name= CountryMealsFragmentArgs.fromBundle(getArguments()).getSelectedCountryName();
         countryName.setText(name);
 
 
@@ -61,9 +61,9 @@ public class CountryMealsFragment extends Fragment implements CountryViewInterfa
 
 
 
-        countryMealAdapter=new CountryMealAdapter(getContext(),new ArrayList<>(),this);
+        countryMealAdapter=new IngredientAdapter(getContext(),new ArrayList<>(),this);
 
-        countryPresenter=new CountryPresenter(CountryMealsFragment.this,Repository.getInstance(ConcreteLocalSource.getInstance(getContext()),MealClient.getInstance(getContext()),getContext()));
+        countryPresenter=new IngredientPresenter(IngredientFragment.this,Repository.getInstance(ConcreteLocalSource.getInstance(getContext()),MealClient.getInstance(getContext()),getContext()));
 
         mealListRecyclerView.setHasFixedSize(true);
 

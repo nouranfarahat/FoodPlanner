@@ -115,6 +115,25 @@ public class MealClient implements RemoteSource {
     }
 
     @Override
+    public void getMealsByCategory(NetworkDelegate networkDelegate, String categoryName) {
+        Call<MealResponse> call = mealService.getCategoryMeals(categoryName);
+        call.enqueue(new Callback<MealResponse>() {
+            @Override
+            public void onResponse(Call<MealResponse> call, Response<MealResponse> response) {
+                if(response.isSuccessful()&&response.body()!=null)
+                    networkDelegate.onSuccessMeal(response.body().getMeals());
+                Log.i(TAG,"getCategoryMeals success");
+            }
+
+            @Override
+            public void onFailure(Call<MealResponse> call, Throwable t) {
+                networkDelegate.onFailureResponse("Error in Failure "+t.getMessage());
+
+            }
+        });
+    }
+
+    @Override
     public void getMealDetails(NetworkDelegate networkDelegate, String mealName) {
         Call<MealResponse> call = mealService.getMealDetails(mealName);
         call.enqueue(new Callback<MealResponse>() {

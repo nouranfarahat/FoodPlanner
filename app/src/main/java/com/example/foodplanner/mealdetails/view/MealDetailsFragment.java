@@ -42,6 +42,7 @@ import java.util.regex.Pattern;
 
 public class MealDetailsFragment extends Fragment implements MealViewInterface{
     TextView mealName;
+    TextView countryName;
     YouTubePlayerView videoView ;
     ImageView mealImage;
     TextView mealSteps;
@@ -73,6 +74,7 @@ public class MealDetailsFragment extends Fragment implements MealViewInterface{
         super.onViewCreated(view, savedInstanceState);
         ingredientRecyclerView=view.findViewById(R.id.ingredientRV);
         mealName=view.findViewById(R.id.mealName);
+        countryName=view.findViewById(R.id.countryName);
         mealImage=view.findViewById(R.id.mealImageView);
         mealSteps=view.findViewById(R.id.stepsTextView);
         videoView=view.findViewById(R.id.youtube_player_view);
@@ -104,6 +106,7 @@ public class MealDetailsFragment extends Fragment implements MealViewInterface{
     @Override
     public void viewMealDetails(List<Meal> mealList) {
         Meal meal=mealList.get(0);
+        countryName.setText(meal.getStrArea());
         mealSteps.setText(meal.getStrInstructions());
         Glide.with(this)
                 .load(meal.getStrMealThumb()).placeholder(R.drawable.ic_launcher_background)
