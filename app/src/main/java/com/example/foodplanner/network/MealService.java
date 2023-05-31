@@ -20,6 +20,8 @@ public interface MealService {
     public Call<CountryResponse> getCountries();
     @GET("filter.php")
     public Call<MealResponse> getCountryMeals(@Query("a") String CountryName);
+    @GET("filter.php")
+    public Call<MealResponse> getCategoryMeals(@Query("c") String categotyName);
     @GET("search.php")
     public Call<MealResponse> getMealDetails(@Query("s") String mealName);
 }

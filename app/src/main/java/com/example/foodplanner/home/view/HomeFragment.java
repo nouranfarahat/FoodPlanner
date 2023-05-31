@@ -12,8 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
 
 import com.example.foodplanner.R;
 import com.example.foodplanner.database.ConcreteLocalSource;
@@ -23,18 +21,12 @@ import com.example.foodplanner.model.Country;
 import com.example.foodplanner.model.Meal;
 import com.example.foodplanner.model.Repository;
 import com.example.foodplanner.network.MealClient;
-import com.example.foodplanner.network.NetworkDelegate;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.firebase.auth.FirebaseAuth;
+import com.example.foodplanner.utilities.OnFavoriteClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
-public class HomeFragment extends Fragment implements HomeViewInterface,OnFavoriteClickListener {
+public class HomeFragment extends Fragment implements HomeViewInterface, OnFavoriteClickListener {
     /*TextView nameTextView;
     TextView emailTextView;
     Button logoutButton;

@@ -15,6 +15,7 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.foodplanner.R;
 import com.example.foodplanner.model.Category;
 import com.example.foodplanner.model.Country;
@@ -49,9 +50,13 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHold
     public void onBindViewHolder(@NonNull CountryAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.countryTitleTextView.setText(countryList.get(position).getStrArea());
         Glide.with(context)
-                .load(flagList[position]).placeholder(R.drawable.ic_launcher_background)
+                .load(flagList[position])
+                //.apply(new RequestOptions().override(150,130)
+                .placeholder(R.drawable.ic_launcher_background)
                 .error(R.drawable.ic_launcher_foreground)
                 .into(holder.countryImage);
+       // holder.countryCardView.setMinimumWidth(170);
+        //holder.countryCardView.setMinimumHeight(120);
         holder.countryCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

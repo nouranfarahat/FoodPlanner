@@ -22,6 +22,7 @@ import com.example.foodplanner.favorite.presenter.FavoritePresenter;
 import com.example.foodplanner.model.Meal;
 import com.example.foodplanner.model.Repository;
 import com.example.foodplanner.network.MealClient;
+import com.example.foodplanner.utilities.OnFavoriteClickListener;
 
 import java.util.ArrayList;
 import java.util.List;

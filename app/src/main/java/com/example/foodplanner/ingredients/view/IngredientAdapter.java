@@ -1,4 +1,4 @@
-package com.example.foodplanner.countries.view;
+package com.example.foodplanner.ingredients.view;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -18,17 +18,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.foodplanner.R;
 import com.example.foodplanner.home.view.HomeFragmentDirections;
-import com.example.foodplanner.utilities.OnFavoriteClickListener;
 import com.example.foodplanner.model.Meal;
+import com.example.foodplanner.utilities.OnFavoriteClickListener;
 
 import java.util.List;
 
-public class CountryMealAdapter extends RecyclerView.Adapter<CountryMealAdapter.ViewHolder>{
+public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.ViewHolder>{
     private final Context context;
     private List<Meal> mealList;
     private OnFavoriteClickListener listener;
 
-    public CountryMealAdapter(Context context, List<Meal> mealList, OnFavoriteClickListener listener) {
+    public IngredientAdapter(Context context, List<Meal> mealList, OnFavoriteClickListener listener) {
         this.context = context;
         this.mealList = mealList;
         this.listener = listener;
@@ -38,10 +38,10 @@ public class CountryMealAdapter extends RecyclerView.Adapter<CountryMealAdapter.
 
     @NonNull
     @Override
-    public CountryMealAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup recyclerView, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup recyclerView, int viewType) {
         LayoutInflater inflater=LayoutInflater.from(recyclerView.getContext());
         View v=inflater.inflate(R.layout.meal_card,recyclerView,false);
-        CountryMealAdapter.ViewHolder vh=new CountryMealAdapter.ViewHolder(v);
+        ViewHolder vh=new ViewHolder(v);
         Log.i(TAG,"onCreateViewHolder");
         return vh;
     }

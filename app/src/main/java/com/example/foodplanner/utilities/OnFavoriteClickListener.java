@@ -1,5 +1,4 @@
-package com.example.foodplanner.favorite.view;
-
+package com.example.foodplanner.utilities;
 
 import com.example.foodplanner.model.Meal;
 

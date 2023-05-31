@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -49,6 +51,15 @@ public class CategoryMealsAdapter extends RecyclerView.Adapter<CategoryMealsAdap
                 .load(categoryList.get(position).getStrCategoryThumb()).placeholder(R.drawable.ic_launcher_background)
                 .error(R.drawable.ic_launcher_foreground)
                 .into(holder.categoryImage);
+        holder.categoryCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String categoryName=categoryList.get(position).getStrCategory().toString();
+                HomeFragmentDirections.ActionHomeFragmentToCategoryMealsFragment action=HomeFragmentDirections.actionHomeFragmentToCategoryMealsFragment(categoryName);
+                Navigation.findNavController(v).navigate(action);
+
+            }
+        });
 
         Log.i(TAG,"onBindViewHolder");
     }
@@ -63,11 +74,13 @@ public class CategoryMealsAdapter extends RecyclerView.Adapter<CategoryMealsAdap
 
         ImageView categoryImage;
         TextView categoryTitleTextView;
+        CardView categoryCardView;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             categoryImage=itemView.findViewById(R.id.categoryImageView);
             categoryTitleTextView=itemView.findViewById(R.id.categoryTitleTextView);
+            categoryCardView=itemView.findViewById(R.id.meal_card_content);
         }
     }
     public void setList(List<Category> updateList)
