@@ -14,17 +14,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.foodplanner.R;
-import com.example.foodplanner.home.view.CategoryMealsAdapter;
-import com.example.foodplanner.model.Category;
-import com.example.foodplanner.model.Ingredient;
+import com.example.foodplanner.model.IngredientModel;
 
 import java.util.List;
 
 public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.ViewHolder>{
     private final Context context;
-    private List<Ingredient> ingredientList;
+    private List<IngredientModel> ingredientList;
 
-    public IngredientAdapter(Context context, List<Ingredient> ingredientList) {
+    public IngredientAdapter(Context context, List<IngredientModel> ingredientList) {
         this.context = context;
         this.ingredientList = ingredientList;
 
@@ -75,7 +73,7 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.Vi
 
         }
     }
-    public void setList(List<Ingredient> updateList)
+    public void setList(List<IngredientModel> updateList)
     {
         this.ingredientList=updateList;
     }

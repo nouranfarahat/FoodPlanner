@@ -1,37 +1,47 @@
 package com.example.foodplanner.model;
 
 public class Ingredient {
-    private String ingredientName;
-    private String ingredientImg;
-    private String ingredientMeasure;
+    private String idIngredient;
+    private String strIngredient;
+    private String strDescription;
+    private String strType;
 
-    public Ingredient(String ingredientName, String ingredientImg, String ingredientMeasure) {
-        this.ingredientName = ingredientName;
-        this.ingredientImg = ingredientImg;
-        this.ingredientMeasure = ingredientMeasure;
+    public Ingredient(String idIngredient, String strIngredient, String strDescription, String strType) {
+        this.idIngredient = idIngredient;
+        this.strIngredient = strIngredient;
+        this.strDescription = strDescription;
+        this.strType = strType;
     }
 
-    public String getIngredientName() {
-        return ingredientName;
+    public String getIdIngredient() {
+        return idIngredient;
     }
 
-    public void setIngredientName(String ingredientName) {
-        this.ingredientName = ingredientName;
+    public void setIdIngredient(String idIngredient) {
+        this.idIngredient = idIngredient;
     }
 
-    public String getIngredientImg() {
-        return ingredientImg;
+    public String getStrIngredient() {
+        return strIngredient;
     }
 
-    public void setIngredientImg(String ingredientImg) {
-        this.ingredientImg = ingredientImg;
+    public void setStrIngredient(String strIngredient) {
+        this.strIngredient = strIngredient;
     }
 
-    public String getIngredientMeasure() {
-        return ingredientMeasure;
+    public String getStrDescription() {
+        return strDescription;
     }
 
-    public void setIngredientMeasure(String ingredientMeasure) {
-        this.ingredientMeasure = ingredientMeasure;
+    public void setStrDescription(String strDescription) {
+        this.strDescription = strDescription;
+    }
+
+    public String getStrType() {
+        return strType;
+    }
+
+    public void setStrType(String strType) {
+        this.strType = strType;
     }
 }

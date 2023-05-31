@@ -3,6 +3,8 @@ package com.example.foodplanner.categories.presenter;
 import com.example.foodplanner.categories.view.CategoryViewInterface;
 import com.example.foodplanner.model.Category;
 import com.example.foodplanner.model.Country;
+import com.example.foodplanner.model.Ingredient;
+import com.example.foodplanner.model.IngredientModel;
 import com.example.foodplanner.model.Meal;
 import com.example.foodplanner.model.RepositoryInterface;
 import com.example.foodplanner.network.NetworkDelegate;
@@ -33,6 +35,12 @@ public class CategoryPresenter implements NetworkDelegate {
     public void onSuccessCountries(List<Country> countryList) {
 
     }
+
+    @Override
+    public void onSuccessIngredients(List<Ingredient> ingredientList) {
+
+    }
+
 
 
     @Override
