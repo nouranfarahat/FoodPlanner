@@ -63,6 +63,11 @@ public class ConcreteLocalSource implements LocalSource{
     }
 
     @Override
+    public LiveData<List<Meal>> getMealsList() {
+        return mealDAO.getAllMeals();
+    }
+
+    @Override
     public LiveData<List<Meal>> getFavList() {
         return mealDAO.getFavMeals();
     }
@@ -71,6 +76,17 @@ public class ConcreteLocalSource implements LocalSource{
     public LiveData<List<Meal>> getPlanList(String day) {
         LiveData<List<Meal>> planMeals =mealDAO.getPlanMeals(day);
         return planMeals;
+
+    }
+
+    @Override
+    public void deleteAllMeals() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                mealDAO.deleteAllMeals();
+            }
+        }).start();
 
     }
 

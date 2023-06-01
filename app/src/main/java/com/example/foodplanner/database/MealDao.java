@@ -14,8 +14,8 @@ import java.util.List;
 @Dao
 public interface MealDao {
 
-    //@Query("SELECT * FROM meals")
-    //LiveData<List<Meal>> getAllMealss();
+    @Query("SELECT * FROM meals")
+    LiveData<List<Meal>> getAllMeals();
 
     @Query("SELECT * FROM meals WHERE isFavorite='1'")
     LiveData<List<Meal>> getFavMeals();
@@ -30,4 +30,6 @@ public interface MealDao {
     void deleteFavMeal(Meal meal);
     @Delete
     void deletePlanMeal(Meal meal);
+    @Query("DELETE FROM meals")
+    void deleteAllMeals() ;
 }

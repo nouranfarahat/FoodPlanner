@@ -26,6 +26,10 @@ public interface RepositoryInterface {
     public LiveData<List<Meal>> getFavMealsList();
     public LiveData<List<Meal>> getPlanMealsList(String day);
 
+    public LiveData<List<Meal>> getAllMeal();
+    public void deleteAllMeal();
+
+
 
 
 

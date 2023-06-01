@@ -2,6 +2,7 @@ package com.example.foodplanner.planner.view;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +22,8 @@ import com.example.foodplanner.R;
 import com.example.foodplanner.home.view.HomeFragmentDirections;
 import com.example.foodplanner.model.Meal;
 import com.example.foodplanner.utilities.OnFavoriteClickListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
@@ -28,6 +31,8 @@ public class PlanMealsAdapter extends RecyclerView.Adapter<PlanMealsAdapter.View
     private final Context context;
     private List<Meal> mealList;
     private OnRemoveClickListener listener;
+    public static final String PREF_NAME="APPINFO";
+    SharedPreferences pref;
 
     public PlanMealsAdapter(Context context, List<Meal> mealList, OnRemoveClickListener listener) {
         this.context = context;
@@ -65,6 +70,10 @@ public class PlanMealsAdapter extends RecyclerView.Adapter<PlanMealsAdapter.View
             @Override
             public void onClick(View v) {
                 listener.onRemoveClick(mealList.get(position));
+                SharedPreferences prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+
+                String key = prefs.getString("ID","unknwon");
+                deletePlanFire(mealList.get(position),key );
 
             }
         });
@@ -93,6 +102,13 @@ public class PlanMealsAdapter extends RecyclerView.Adapter<PlanMealsAdapter.View
             mealCard=itemView.findViewById(R.id.meal_card_content);
             removeBtn=itemView.findViewById(R.id.remove_btn);
         }
+    }
+    void deletePlanFire(Meal mealToDelete, String c){
+        DatabaseReference userRef= FirebaseDatabase.getInstance().getReference().child("User");//= FirebaseDatabase.getInstance().getReference().child("User");
+        final int[] counter = {0};
+
+        userRef.child(c).child("Meals").child(mealToDelete.getIdMeal()).removeValue();
+        Log.i("TAG", "deletePlanFire: deleted from plan fire base");
     }
     public void setList(List<Meal> updateList)
     {

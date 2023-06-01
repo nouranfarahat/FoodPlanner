@@ -95,4 +95,16 @@ remoteSource.getMealsByIngredient(networkDelegate,ingredientName);
     public LiveData<List<Meal>> getPlanMealsList(String day) {
         return localSource.getPlanList(day);
     }
+
+    @Override
+    public LiveData<List<Meal>> getAllMeal( ) {
+        return localSource.getMealsList();
+    }
+
+    @Override
+    public void deleteAllMeal() {
+        localSource.deleteAllMeals();
+    }
+
+
 }

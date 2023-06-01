@@ -55,4 +55,9 @@ public class MealDetailsPresenter implements NetworkDelegate {
     {
         repositoryInterface.insertMeal(meal);
     }
+    public void addToFav(Meal meal)
+    {
+        repositoryInterface.insertMeal(meal);
+    }
+
 }

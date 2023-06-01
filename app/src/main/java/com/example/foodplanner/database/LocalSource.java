@@ -11,7 +11,8 @@ public interface LocalSource {
     public void removeFavMeal(Meal meal);
     public void removePlanMeal(Meal meal);
 
-    //public LiveData<List<Meal>> getMealsList();
+    public LiveData<List<Meal>> getMealsList();
     public LiveData<List<Meal>> getFavList();
     public LiveData<List<Meal>> getPlanList(String day);
+    public void deleteAllMeals();
 }

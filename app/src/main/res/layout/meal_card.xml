@@ -29,12 +29,13 @@
             android:layout_height="40dp"
             android:textOff=""
             android:textOn=""
-            android:background="@drawable/toggle_selector"
+            android:background="@drawable/transparent_background"
             android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
             android:layout_margin="16dp"
             android:scaleType="fitCenter"
-            android:padding="7dp"/>
+            android:padding="7dp"
+            />
 
         <TextView
             android:id="@+id/mealTitleTextView"

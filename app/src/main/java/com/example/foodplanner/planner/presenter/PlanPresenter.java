@@ -37,6 +37,10 @@ public class PlanPresenter {
     {
         repositoryInterface.removePlanMeal(meal);
     }
+    public void addDataFromFirebase(Meal meal)
+    {
+        repositoryInterface.insertMeal(meal);
+    }
 
 
 

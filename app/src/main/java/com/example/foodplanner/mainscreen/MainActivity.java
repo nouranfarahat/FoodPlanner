@@ -9,6 +9,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -46,16 +47,26 @@ public class MainActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
     BottomNavigationView bottomNavigationView;
     FloatingActionButton floatingActionButton;
+    public static final String PREF_NAME="APPINFO";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        SharedPreferences pref=getSharedPreferences(PREF_NAME,0);
 
+        String user=pref.getString("GUEST","unknown");
         floatingActionButton=findViewById(R.id.fab);
         bottomNavigationView=findViewById(R.id.bottom_navigation_view);
         getSupportActionBar().hide();
         NavController navController= Navigation.findNavController(this,R.id.nav_host_fragment);
         NavigationUI.setupWithNavController(bottomNavigationView,navController);
+        if(user.equals("YES")){
+            floatingActionButton.setEnabled(false);
+            bottomNavigationView.getMenu().getItem(2).setEnabled(false);
+            bottomNavigationView.getMenu().getItem(3).setEnabled(false);
+        }
+
         /*bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {public boolean onNavigationItemSelected(@NonNull MenuItem item) {
