@@ -11,6 +11,8 @@ public class Meal {
     @PrimaryKey
     @NonNull
     public String idMeal;
+    public String days;
+    public boolean isFavorite;
     public String strMeal;
     public String strDrinkAlternate;
     public String strCategory;
@@ -63,6 +65,22 @@ public class Meal {
     public String strImageSource;
     public String strCreativeCommonsConfirmed;
     public String dateModified;
+
+    public String getDaysList() {
+        return days;
+    }
+
+    public void setDaysList(String daysList) {
+        this.days = daysList;
+    }
+
+    public boolean isFavorite() {
+        return isFavorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        isFavorite = favorite;
+    }
 
     public String getIdMeal() {
         return idMeal;

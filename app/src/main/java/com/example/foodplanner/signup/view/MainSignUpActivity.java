@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +14,8 @@ import android.widget.Toast;
 
 import com.example.foodplanner.ProfileActivity;
 import com.example.foodplanner.R;
+import com.example.foodplanner.home.view.HomeFragment;
+import com.example.foodplanner.mainscreen.MainActivity;
 import com.example.foodplanner.model.User;
 import com.example.foodplanner.signin.view.SignInActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -33,19 +36,26 @@ public class MainSignUpActivity extends AppCompatActivity {
 
     Button googleButton;
     Button signUpWithEmailButton;
+    Button skipButton;
     GoogleSignInOptions googleSignInOptions;
     GoogleSignInClient googleSignInClient;
     FirebaseDatabase database;
     FirebaseAuth auth;
     ProgressDialog progressDialog;
+    public static final String PREF_NAME="APPINFO";
+    SharedPreferences pref;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_sign_up);
         getSupportActionBar().hide();
+        pref=getSharedPreferences(PREF_NAME,0);
 
         googleButton=findViewById(R.id.googleBtn);
+        skipButton=findViewById(R.id.skipBtn);
         signUpWithEmailButton=findViewById(R.id.signUpWithEmailBtn);
         auth=FirebaseAuth.getInstance();
         database=FirebaseDatabase.getInstance();
@@ -71,6 +81,15 @@ public class MainSignUpActivity extends AppCompatActivity {
                 signUpActivity();
             }
         });
+        skipButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences.Editor editor=pref.edit();
+                editor.putString("GUEST","YES");
+                editor.commit();
+                homeActivity();
+            }
+        });
     }
     int RC_SIGN_IN=40;
     private void signIn() {
@@ -90,8 +109,15 @@ public class MainSignUpActivity extends AppCompatActivity {
             //  handleSignInResult(task);
             try {
                 GoogleSignInAccount account=task.getResult(ApiException.class);
-                firebaseAuth(account.getIdToken());
-                HomeActivity();
+                GoogleSignInAccount currentAccount = GoogleSignIn.getLastSignedInAccount(this);
+                if(currentAccount!=null)
+                    Toast.makeText(MainSignUpActivity.this,"User Exist",Toast.LENGTH_LONG).show();
+
+                else
+                    firebaseAuth(account.getIdToken());
+
+
+                homeActivity();
             } catch (ApiException e) {
                 e.printStackTrace();
             }
@@ -107,9 +133,17 @@ public class MainSignUpActivity extends AppCompatActivity {
                         if(task.isSuccessful())
                         {
                             FirebaseUser user=auth.getCurrentUser();
+                            SharedPreferences.Editor editor=pref.edit();
+                            editor.putString("USERNAME",user.getDisplayName());
+                            editor.putString("EMAIL",user.getEmail());
+                            editor.putString("ID",user.getUid());
+                            editor.putString("LOGIN","YES");
+                            editor.putString("GUEST","NO");
+                            editor.commit();
                             User currentUser=new User(user.getDisplayName(),user.getEmail());
+
                             database.getReference("User").child(user.getUid()).setValue(currentUser);
-                            Intent intent=new Intent(MainSignUpActivity.this, SignUpActivity.class);
+                            Intent intent=new Intent(MainSignUpActivity.this, MainActivity.class);
                             //intent.putExtra("UserInfo",currentUser);
 
 
@@ -122,9 +156,9 @@ public class MainSignUpActivity extends AppCompatActivity {
                 });
     }
 
-    private void HomeActivity() {
+    private void homeActivity() {
         finish();
-        Intent intent=new Intent(MainSignUpActivity.this, SignUpActivity.class);
+        Intent intent=new Intent(MainSignUpActivity.this, MainActivity.class);
         startActivity(intent);
     }
     private void signUpActivity() {

@@ -35,12 +35,12 @@
     </fragment>
     <fragment
         android:id="@+id/userFragment"
-        android:name="com.example.foodplanner.profile.UserFragment"
+        android:name="com.example.foodplanner.profile.view.UserFragment"
         android:label="fragment_user"
         tools:layout="@layout/fragment_user" />
     <fragment
         android:id="@+id/plannerFragment"
-        android:name="com.example.foodplanner.planner.PlannerFragment"
+        android:name="com.example.foodplanner.planner.view.PlannerFragment"
         android:label="fragment_planner"
         tools:layout="@layout/fragment_planner" />
     <fragment

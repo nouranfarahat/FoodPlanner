@@ -155,6 +155,7 @@ public class HomeFragment extends Fragment implements HomeViewInterface, OnFavor
 
     @Override
     public void onFavClick(Meal meal) {
+        meal.setFavorite(true);
         homePresenter.addToFav(meal);
     }
 

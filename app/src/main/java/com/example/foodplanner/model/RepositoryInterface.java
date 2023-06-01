@@ -20,8 +20,16 @@ public interface RepositoryInterface {
     public void getMealDetails(NetworkDelegate networkDelegate,String mealName);
 
     public void insertMeal(Meal meal);
-    public void removeMeal(Meal meal);
+    public void removeFavMeal(Meal meal);
+    public void removePlanMeal(Meal meal);
+
     public LiveData<List<Meal>> getFavMealsList();
+    public LiveData<List<Meal>> getPlanMealsList(String day);
+
+    public LiveData<List<Meal>> getAllMeal();
+    public void deleteAllMeal();
+
+
 
 
 

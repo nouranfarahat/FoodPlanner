@@ -13,13 +13,13 @@ public class FavoritePresenter {
         this.repositoryInterface = repositoryInterface;
     }
 
-    public void getAllProducts()
+    public void getAllFavMeals()
     {
         favViewInterface.showFavMeals(repositoryInterface.getFavMealsList());
     }
 
     public void deleteFromFav(Meal meal)
     {
-        repositoryInterface.removeMeal(meal);
+        repositoryInterface.removeFavMeal(meal);
     }
 }

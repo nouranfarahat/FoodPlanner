@@ -67,7 +67,7 @@ public class FavoriteFragment extends Fragment implements OnFavoriteClickListene
 
         recyclerView.setAdapter(adapter);
 
-        favoritePresenter.getAllProducts();
+        favoritePresenter.getAllFavMeals();
     }
 
     @Override
