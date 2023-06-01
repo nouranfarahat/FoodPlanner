@@ -104,6 +104,9 @@ public class UserFragment extends Fragment implements ProfileViewInterface{
             public void onClick(View v) {
                 LiveData<List<Meal>> mealsList=profilePresenter.getAllMeals();
                 //addMealsToFireBase(mealsList);
+                SharedPreferences.Editor editor=pref.edit();
+                editor.putString("LOGIN","NO");
+                editor.commit();
                 profilePresenter.deleteAllMeals();
                 signOut();
             }

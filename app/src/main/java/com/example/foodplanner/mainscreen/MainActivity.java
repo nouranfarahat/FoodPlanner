@@ -8,10 +8,14 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.net.ConnectivityManager;
+import android.net.NetworkCapabilities;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -19,6 +23,7 @@ import android.widget.Toast;
 
 import com.example.foodplanner.ProfileActivity;
 import com.example.foodplanner.R;
+import com.example.foodplanner.favorite.view.FavoriteFragment;
 import com.example.foodplanner.model.User;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -66,6 +71,31 @@ public class MainActivity extends AppCompatActivity {
             bottomNavigationView.getMenu().getItem(2).setEnabled(false);
             bottomNavigationView.getMenu().getItem(3).setEnabled(false);
         }
+        if (checkConnectivity() == false) {
+            FavoriteFragment fragment = new FavoriteFragment();
+            fragment.setArguments(new Bundle());
+            navController.navigate(R.id.favoriteFragment);
+            Menu menu = bottomNavigationView.getMenu();
+            MenuItem menuItem = menu.findItem(R.id.homeFragment);
+            MenuItem menuItem2 = menu.findItem(R.id.searchFragment);
+            MenuItem menuItem3 = menu.findItem(R.id.userFragment);
+            menuItem.setEnabled(false);
+            menuItem2.setEnabled(false);
+            menuItem3.setEnabled(false);
+
+        }
+        NavigationUI.setupWithNavController(bottomNavigationView, navController);
+    }
+    private boolean checkConnectivity(){
+        ConnectivityManager connectivityManager = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkCapabilities networkCapabilities = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            networkCapabilities = connectivityManager.getNetworkCapabilities(connectivityManager.getActiveNetwork());
+        }
+        boolean isConnected = networkCapabilities != null && networkCapabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET);
+        return isConnected;
+    }
+
 
         /*bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -108,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });*/
-    }
+
 
     int RC_SIGN_IN=40;
     private void signIn() {

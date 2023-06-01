@@ -1,7 +1,9 @@
 package com.example.foodplanner.mealdetails.view;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -123,6 +125,37 @@ public class MealDetailsFragment extends Fragment implements MealViewInterface, 
 
         ingredientRecyclerView.setAdapter(ingredientAdapter);
 
+        /*if (isNetworkAvailable(getContext())) {
+            mealDetailsPresenter.getMealFromRepo(mealNameFromArgs);
+            Log.i("TAG", "onCreate: " + mealNameFromArgs);
+
+        } else if (typeTable.equals("favourite")) {
+            Log.i("TAG", "onCreate: favourite table favourite meaal is presented");
+            presenter.getOffMealDetail(mealName).observe(this, new Observer<MealDetails>() {
+                @Override
+                public void onChanged(MealDetails mealDetail) {
+                    mealResponse = mealDetail;
+                    MealName.setText(mealDetail.getMealName());
+                    MealCountry.setText(mealDetail.getStrArea());
+                    createIngredientList(mealDetail);
+                    adapter = new IngredientsAdapter(getApplicationContext(), myIngredients);
+                    recyclerView.setAdapter(adapter);
+                    String thumb = "https://www.themealdb.com/images/ingredients/" + mealDetail.getStrIngredient1() + ".png";
+                    myIngredients.add(new Recipe(mealDetail.getStrIngredient1(), mealDetail.getStrMeasure1(), thumb));
+                    adapter = new IngredientsAdapter(getApplicationContext(), myIngredients);
+                    recyclerView.setAdapter(adapter);
+                    Glide.with(getApplicationContext())
+                            .load(mealDetail.getStrMealThumb())
+                            .placeholder(R.drawable.ic_launcher_background)
+                            .error(R.drawable.ic_launcher_foreground)
+                            .into(mealPic);
+                    steps.setText(mealDetail.getStrInstructions());
+
+
+                }
+            });
+
+        }*/
         mealDetailsPresenter.getMealFromRepo(mealNameFromArgs);
 
         /*planBtn.setOnClickListener(new View.OnClickListener() {
@@ -376,5 +409,9 @@ public class MealDetailsFragment extends Fragment implements MealViewInterface, 
 
             }
         });*/
+    }
+    public static boolean isNetworkAvailable(Context context) {
+        ConnectivityManager connectivityManager = ((ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE));
+        return connectivityManager.getActiveNetworkInfo() != null && connectivityManager.getActiveNetworkInfo().isConnected();
     }
 }
