@@ -14,12 +14,20 @@ import java.util.List;
 @Dao
 public interface MealDao {
 
-    @Query("SELECT * FROM meals")
-    LiveData<List<Meal>> getAllMealss();
+    //@Query("SELECT * FROM meals")
+    //LiveData<List<Meal>> getAllMealss();
+
+    @Query("SELECT * FROM meals WHERE isFavorite='1'")
+    LiveData<List<Meal>> getFavMeals();
+
+    @Query("SELECT * FROM meals WHERE days=:day")
+    LiveData<List<Meal>> getPlanMeals(String day);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertMeal(Meal meal);
 
     @Delete
-    void deleteMeal(Meal meal);
+    void deleteFavMeal(Meal meal);
+    @Delete
+    void deletePlanMeal(Meal meal);
 }

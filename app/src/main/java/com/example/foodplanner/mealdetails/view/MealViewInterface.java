@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface MealViewInterface {
     public void viewMealDetails(List<Meal> mealList);
+    public void addMealToPlan(Meal meal);
 }

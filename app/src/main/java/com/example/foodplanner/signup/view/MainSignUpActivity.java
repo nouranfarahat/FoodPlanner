@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +14,8 @@ import android.widget.Toast;
 
 import com.example.foodplanner.ProfileActivity;
 import com.example.foodplanner.R;
+import com.example.foodplanner.home.view.HomeFragment;
+import com.example.foodplanner.mainscreen.MainActivity;
 import com.example.foodplanner.model.User;
 import com.example.foodplanner.signin.view.SignInActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -38,6 +41,8 @@ public class MainSignUpActivity extends AppCompatActivity {
     FirebaseDatabase database;
     FirebaseAuth auth;
     ProgressDialog progressDialog;
+    public static final String PREF_NAME="APPINFO";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,6 +112,11 @@ public class MainSignUpActivity extends AppCompatActivity {
                         if(task.isSuccessful())
                         {
                             FirebaseUser user=auth.getCurrentUser();
+                            SharedPreferences pref=getSharedPreferences(PREF_NAME,0);
+                            SharedPreferences.Editor editor=pref.edit();
+                            editor.putString("USERNAME",user.getDisplayName());
+                            editor.putString("EMAIL",user.getEmail());
+                            editor.commit();
                             User currentUser=new User(user.getDisplayName(),user.getEmail());
                             database.getReference("User").child(user.getUid()).setValue(currentUser);
                             Intent intent=new Intent(MainSignUpActivity.this, SignUpActivity.class);
@@ -124,7 +134,7 @@ public class MainSignUpActivity extends AppCompatActivity {
 
     private void HomeActivity() {
         finish();
-        Intent intent=new Intent(MainSignUpActivity.this, SignUpActivity.class);
+        Intent intent=new Intent(MainSignUpActivity.this, MainActivity.class);
         startActivity(intent);
     }
     private void signUpActivity() {

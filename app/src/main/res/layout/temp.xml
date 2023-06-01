@@ -1,171 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".home.view.HomeFragment">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/planmealitem"
+    app:cardBackgroundColor="@color/yellow"
+    app:cardCornerRadius="15dp"
+    app:cardElevation="8dp"
+    app:cardMaxElevation="8dp"
+    app:cardUseCompatPadding="true"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
 
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="16dp"/>
+        android:layout_height="wrap_content">
 
-    <ScrollView
-        android:id="@+id/scrollView2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/mealImage"
+            android:layout_width="140dp"
+            android:layout_height="150dp"
+            android:layout_margin="25dp"
+            android:src="@drawable/backgroundimg"
+            app:civ_border_color="@color/yellow"
+            app:civ_border_width="2dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline3"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:weightSum="12">
+            app:layout_constraintGuide_begin="16dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="10dp"
-                android:layout_weight="1"
-                android:text="@string/daily_inspiration"
-                android:textColor="@color/yellow"
-                android:textSize="30dp"
-                android:textStyle="bold"
-                android:layout_marginStart="16dp"
-                />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="16dp" />
 
+        <TextView
+            android:id="@+id/mealName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:paddingBottom="5dp"
+            android:text="@string/countries"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/mealImage"
+            app:layout_constraintHorizontal_bias="0.538"
+            app:layout_constraintStart_toStartOf="@+id/mealImage"
+            app:layout_constraintTop_toBottomOf="@+id/mealImage" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/daily_inspirationRV"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                app:layout_constraintVertical_weight="1"
-                tools:listitem="@layout/category_card"
-                android:gravity="end"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_weight="1"
-                android:text="@string/categories"
-                android:textColor="@color/yellow"
-                android:textSize="30dp"
-                android:textStyle="bold"
-                android:layout_marginStart="16dp"
-                />
+        <ImageButton
+            android:id="@+id/mealFav"
+            android:layout_width="30dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/fav_card_background"
+            app:layout_constraintEnd_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/categoriesRV"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                app:layout_constraintVertical_weight="1"
-                tools:itemCount="5"
-                tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/category_card"
-                tools:orientation="horizontal"
-                tools:scrollbars="horizontal"
-                tools:spanCount="10" />
+        <Button
+            android:id="@+id/remove_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Remove"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.503"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mealName" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_weight="1"
-                android:text="@string/countries"
-                android:textColor="@color/yellow"
-                android:textSize="30dp"
-                android:textStyle="bold"
-                android:layout_marginStart="16dp"
-                />
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/countriesRV"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                app:layout_constraintVertical_weight="1" />
-        </LinearLayout>
-    </ScrollView>
-
-    <!--<androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">-->
-    <!--        <FrameLayout
-                android:id="@+id/frame_layout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-            <com.google.android.material.bottomappbar.BottomAppBar
-                android:id="@+id/app_bar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:backgroundTint="@color/purple_200"
-                app:fabCradleRoundedCornerRadius="50dp"
-                app:fabCradleVerticalOffset="6dp"
-                app:fabCradleMargin="5dp">
-                <com.google.android.material.bottomnavigation.BottomNavigationView
-                    android:id="@+id/bottomNavigationView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
-                    app:labelVisibilityMode="labeled"
-                    android:layout_marginEnd="20dp"
-                    app:menu="@menu/bottom_menu" />
-
-            </com.google.android.material.bottomappbar.BottomAppBar>
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/floatingActionButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/yellow"
-                android:src="@drawable/calendar"
-                app:layout_anchor="@id/app_bar"
-                app:maxImageSize="30dp"
-                app:tint="@color/white"/>-->
-    <!--<com.google.android.material.bottomappbar.BottomAppBar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:id="@+id/bottomAppBar"
-        app:fabCradleMargin="10dp"
-        app:fabCradleRoundedCornerRadius="10dp"
-        app:fabCradleVerticalOffset="10dp">
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/bottomNavigationView"
-            android:layout_marginRight="16dp"
-            app:menu="@menu/bottom_menu"
-            android:background="@drawable/transparent_background"
-
-            />
-    </com.google.android.material.bottomappbar.BottomAppBar>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/fab"
-        android:src="@drawable/calendar"
-        app:layout_anchor="@id/bottomAppBar"
-        app:maxImageSize="27dp"
-        app:tint="@color/white"
-        android:backgroundTint="@color/yellow" />
-</androidx.coordinatorlayout.widget.CoordinatorLayout>-->
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

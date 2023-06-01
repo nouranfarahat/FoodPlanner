@@ -1,15 +1,184 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".planner.PlannerFragment">
+    android:orientation="vertical"
+    android:weightSum="9"
+    tools:context=".planner.view.PlannerFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:text="My Plan"
+        android:layout_weight="8"
+        android:textColor="@color/yellow"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:layout_marginStart="16dp"/>
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Planner"
-        android:gravity="center"/>
+        android:orientation="vertical"
+        android:layout_weight="1"
+        tools:context=".favorite.view.FavoriteFragment">
 
-</FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/saturday"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/saturdayRV"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:itemCount="6"
+                tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/plan_meal_item"
+                tools:orientation="horizontal"
+                tools:scrollbars="vertical"
+                tools:spanCount="5" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:text="Sunday"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/sundayRV"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:itemCount="6"
+                tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/plan_meal_item"
+                tools:orientation="horizontal"
+                tools:scrollbars="vertical"
+                tools:spanCount="5" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:text="Monday"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/mondayRV"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:itemCount="6"
+                tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/plan_meal_item"
+                tools:orientation="horizontal"
+                tools:scrollbars="vertical"
+                tools:spanCount="5" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:text="Tuesday"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/tuesdayRV"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:itemCount="6"
+                tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/plan_meal_item"
+                tools:orientation="horizontal"
+                tools:scrollbars="vertical"
+                tools:spanCount="5" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:text="Wednesday"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/wednesdayRV"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:itemCount="6"
+                tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/plan_meal_item"
+                tools:orientation="horizontal"
+                tools:scrollbars="vertical"
+                tools:spanCount="5" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:text="Thursday"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/thursdayRV"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:itemCount="6"
+                tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/plan_meal_item"
+                tools:orientation="horizontal"
+                tools:scrollbars="vertical"
+                tools:spanCount="5" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:text="Friday"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/fridayRV"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:itemCount="6"
+                tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/plan_meal_item"
+                tools:orientation="horizontal"
+                tools:scrollbars="vertical"
+                tools:spanCount="5" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

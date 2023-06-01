@@ -50,4 +50,9 @@ public class MealDetailsPresenter implements NetworkDelegate {
     {
         repositoryInterface.getMealDetails(this,mealName);
     }
+
+    public void addMealToPlan(Meal meal)
+    {
+        repositoryInterface.insertMeal(meal);
+    }
 }

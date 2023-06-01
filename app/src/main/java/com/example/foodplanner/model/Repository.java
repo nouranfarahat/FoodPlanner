@@ -77,12 +77,22 @@ remoteSource.getMealsByIngredient(networkDelegate,ingredientName);
     }
 
     @Override
-    public void removeMeal(Meal meal) {
-        localSource.removeMeal(meal);
+    public void removeFavMeal(Meal meal) {
+        localSource.removeFavMeal(meal);
+    }
+
+    @Override
+    public void removePlanMeal(Meal meal) {
+        localSource.removePlanMeal(meal);
     }
 
     @Override
     public LiveData<List<Meal>> getFavMealsList() {
-        return localSource.getMealsList();
+        return localSource.getFavList();
+    }
+
+    @Override
+    public LiveData<List<Meal>> getPlanMealsList(String day) {
+        return localSource.getPlanList(day);
     }
 }

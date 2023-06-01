@@ -20,6 +20,7 @@
     <string name="ingredients">Ingredients</string>
     <string name="text">The temprature in Egypt today at noon time is 64 FThe temprature in Egypt today at noon time is 64 FThe temprature in Egypt today at noon time is 64 FThe temprature in Egypt today at noon time is 64 F. The humidity will be around 47% with wind speedof 9 miles. The temprature in Egypt todayevening time is 0%, with wind speed of 8 miles.</string>
     <string name="steps">Steps</string>
+    <string name="saturday">Saturday</string>
 
     <string-array name="CountryFlag">
         <item name="American">"https://www.worldometers.info/img/flags/us-flag.gif"</item>
